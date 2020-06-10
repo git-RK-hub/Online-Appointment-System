@@ -1,0 +1,42 @@
+extends base
+
+mixin doctor-card(doctor)
+    .doctor-card
+        .doc-card-img
+            img(src="/img/first.jpg", alt="Doctor profile" width="304px" height="216px")
+        .doc-card-content
+            .row#doc-name.justify-content-end
+                .col-md-11
+                    p(style="font-size:20px; font-weight:500; margin-top:15px;")= doctor.name
+            .row#doc-address.justify-content-end
+                .col-md-11
+                    p(style="font-size:15px; font-weight:200; margin-top:0px;")= doctor.address
+            .row#doc-number.justify-content-end
+                .col-md-11
+                    p(style="font-size:13px; font-weight:bolder; margin-top:0px;")= doctor.contact
+            #doc-status
+                .row.row-header
+                    .col-md-3
+                        #like Like
+                    .col-md-4
+                        #rating-star= `Rating ${doctor.ratingsAverage}`
+                    .col-md-5
+                        a#read-more(href=`/${doctor.id}/book-appointment`) Book Appointment
+
+block append content
+    .row.row-header
+        .doctor-head    
+            .col-md-2.offset-1
+                p(style="color: white; font-weight: 500; font-size: 25px;") Doctors
+            .col-md-2.offset-1
+                p(style="color: white; font-weight: 400; font-size: 17px;") Home / Doctors
+    
+    .doctor-body
+        .row.row-header
+            .col-md-7.offset-1
+                each doctor in doctors
+                    +doctor-card(doctor)
+            .col-md-4
+                .search-doctor
+                    input 
+

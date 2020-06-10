@@ -1,0 +1,63 @@
+doctype html
+html(lang="en")
+    head
+        block head
+            meta(charset="UTF-8")
+            meta(http-equiv="x-ua-compatible" content="ie=edge")
+            meta(name="viewport", content="width=device-width, initial-scale=1.0, shrink-to-fit=no")
+            link(href="https://fonts.googleapis.com/css?family=Arvo" rel="styleshhet")
+            link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800")
+            link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+            link(rel="stylesheet" href="/bootstrap_css/bootstrap.min.css")
+            link(rel="stylesheet" href="/css/style.css")
+            title #{title}
+    
+    body 
+
+        include _header
+    
+        block content
+            .login-container
+                .row.row-header.justify-content-center
+                    .col-sm-4
+                        .login-form
+                            .row.row-header.justify-content-end
+                                .col-md-2
+                                    i.fa.fa-times(style="cursor: pointer; color: #4d4646; font-size: 20px; margin-left: 22px;")
+                            .row.row-header.justify-content-center
+                                .login-head
+                                    .row.row-header
+                                        .col-md-12
+                                            p Remedium Login
+                            .row.row-header.justify-content-center
+                                .login-card
+                                    .col-md-12  
+                                        label.log-radio Patient
+                                            input(type="radio" id="selPat" value="patient" name="log-selector" checked)
+                                            span
+                                        label.log-radio Doctor
+                                            input(type="radio" id="selDoc" value="doctor" name="log-selector")
+                                            span
+                                    .col-md-12
+                                        input#log-email(type="text" class="password-input" placeholder="user@example.com")
+                                    .col-md-12
+                                        input#log-password(type="password" class = "name-input" placeholder="Password")
+                                    .col-md-12
+                                        button.login-btn(type="submit" id="login-btn") Log in
+                            .row.row-header
+                                .forgot-password
+                                    .col-md-8.offset-2
+                                        p(style="color: blue; cursor: pointer; font-size:14px;") Forgot Password ?
+                            .row.row-header
+                                .col-md-2.offset-2
+                                    i.fa.fa-google-plus(style="font-size:16px; width: 30px; height: 30px; color: white; border-radius:50%; background:red; display:flex; place-items:center; justify-content:center;")
+                                .col-md-2
+                                    i.fa.fa-facebook(style="font-size:16px; width: 30px; height: 30px; color: white; border-radius:50%; background:#1f48ef; display:flex; place-items:center; justify-content: center;")
+                                .col-md-2
+                                    i.fa.fa-twitter(style="font-size:16px; width: 30px; height: 30px; color: white; border-radius:50%; background:#0097e6; display:flex; place-items:center; justify-content: center;")
+        include _footer
+
+    script(src='/js/bundle.js')
+    script(src="/jQuery/jquery.slim.min.js")
+    script(src="/popper/popper.min.js")
+    script(src="/bootstrap_js/bootstrap.min.js")

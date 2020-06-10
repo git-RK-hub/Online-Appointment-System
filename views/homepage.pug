@@ -1,0 +1,90 @@
+extends base
+
+mixin newsCard()
+    .p-3
+        .news-card
+            img(src="" id="img" alt="Requesting News. Please Wait...")
+            #content
+            a(href="" id="read-link") Read More
+
+
+mixin viewCard(icon, content)
+     .col-12.col-sm-3
+        .info-card 
+            i.fa(class = `fa-${icon}`)
+        .info-card-content  
+            p= content
+
+mixin selectOption(id, text, description)
+    .option
+        input(type="radio" class="radio" id= `${id}` name="category")
+        label(for=`${id}`)= text
+        p.description= description
+
+block append content
+    .find-doctor-panel
+        .row.row-header
+            .col-sm-6.offset-3
+                .bookAppHeading Find and book a doctor appointment right now.
+                p(style="text-align: center;font-size: 20px ;color: #ffffff") Search Doctors and Book appointments online, instantly
+        .row.row-header.justify-content-center.no-gutters.search-options
+            .col-sm-2
+                .categories
+                    .select-box
+                        .options-container
+                            +selectOption('pediatrician', 'Pediatrician','Pediatricians take care of younger patients, from infancy through age 18 or, in some cases, age 21.')
+                            +selectOption('gynecologist', 'Gynecologist', `An GYN is a doctor who specializes in women's health, including reproductive health, provide women with preventive care, manage pregnancy, labor, and delivery, and diagnose and treat diseases of the reproductive organs.`)
+                            +selectOption('surgeon', 'Surgeon', 'Surgeons can be trained in general surgery or in more specialized areas of surgery, such as hand surgery, pediatric surgery, surgical oncology, or vascular surgery')
+                            +selectOption('psychiatrist', 'Psychiatrist', 'A psychiatrist specializes in mental health and treats emotional and behavioral problems through a combination of personal counseling (psychotherapy), psychoanalysis, hospitalization, and medication.')
+                            +selectOption('cardiologist', 'Cardiologist', 'Cardiology is one of many sub-specialties of internal medicine. Cardiologists focus on treatment of the heart and its blood vessels')
+                            +selectOption('dermatologist', 'Dermatologist','A dermatologist is a specialist doctor who manages diseases related to skin, hair and nails and some cosmetic problems.')
+                            +selectOption('endocrinologist', 'Endocrinologist','An endocrinologist diagnose and treat hormone imbalances in the endocrine organs, which include the pituitary, thyroid, adrenals, ovaries, testes and pancreas.')
+                            +selectOption('gastroenterologist', 'Gastroenterologist', 'A sub-specialty of internal medicine, gastroenterologists treat the digestive system.')
+                            +selectOption('nephrologist', 'Nephrologist','Nephrologists treat kidney disease and prescribe dialysis for those experiencing kidney failure')
+                            +selectOption('infectiousDiseasePhysician', 'Infectious Disease Physician','Infectious disease physicians deal with infections that are hard to diagnose or treat. A sub-specialty of internal medicine, infectious disease physicians treat serious infections such as swine flu, bird flu, and HIV/AIDS')
+                            +selectOption('otolaryngologist', 'Otolaryngologist','An otolaryngologist is a doctor who treats issues in your ears, nose, or throat as well as some areas in your head and neck.')
+                            +selectOption('pulmonologist', 'Pulmonologist','Pulmonologists treat the cardio-pulmonary system, which consists of the organs, including the lungs and heart, that work together to help a person breathe.')
+                            +selectOption('neurologist', 'Neurologist','Neurologists are doctors who take care of patients with medical conditions that affect the brain, spine, or nerves.')
+                            +selectOption('ophthalmologist', 'Ophthalmologist','Ophthalmologists are medical doctors who treat diseases or disorders of the eyes, such as cataracts and glaucoma.')
+                            +selectOption('physicianExecutive', 'Physician Executive', 'Some physicians do not practice medicine, instead, taking leading roles in healthcare policy, pharmaceutical research, or in health insurance companies.')
+                            +selectOption('radiologist', 'Radiologist', 'A radiologist is a physician who is trained in looking at and interpreting diagnostic tests')
+                            +selectOption('anesthesiologist', 'Anesthesiologist', 'Anesthesiologists are trained to manage patient pain and vital signs during surgery.')
+                            +selectOption('oncologist', 'Oncologist','Oncology is a subspecialty of internal medicine. Oncologists take care of patients who have cancer by treating the cancer itself, as well as the symptoms caused by the disease.') 
+
+                        .selected Select Category
+                        .search-box
+                            input(type="text" placeholder="Search")
+            .col-sm-2
+                .location
+                    input(type="text" name="location" placeholder="Location" id="location")      
+            .col-sm-2
+                .radius
+                    input(type="number" name="radius" placeholder="Radius(km)" id="radius")
+            .col-sm-2
+                .search
+                    a(href="./doctors")
+                        input(type="submit" name="search" id="search" value="Search")
+
+    .four-function
+        .row.row-header.text-center
+            .col-sm-8.offset-2
+                p.heading1 Find a Doctors and Book appointments online instantly!
+                p.heading6 Choose the best time for you. Book with a click
+        .row.row-header.view-card
+            +viewCard('user-md', 'Search doctor, 24/7')
+            +viewCard('heartbeat', 'Choose best practice')
+            +viewCard('ambulance', 'Book appointment')
+            +viewCard('medkit', 'Review service')
+            
+    .news-panel 
+        .row.row-header
+            .col-sm-6
+                h2(style="font-size: 29px; text-align:left; margin-left:4pc;") Latest Health & Medical News
+            .row.row-header.d-flex
+                +newsCard()
+                +newsCard()
+                +newsCard()
+                
+   
+
+                     

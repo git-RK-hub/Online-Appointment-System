@@ -1,0 +1,31 @@
+.jumbotron-wrapper
+    header.nav-header.align-items-center
+        nav.row.row-header.whitespace
+        nav.row.row-header
+            .col-2.offset-1
+                a.remedium-btn(href="/") Remedium
+            .col-2(class="my-auto")
+                a.btn-1(href='#') How it works        
+            .col-2(class="my-auto")
+                a.btn-1(href='/doctors') Doctors
+            .col-4.offset-1
+                .row.row.header.justify-content-center
+                    if (user)
+                        .col-1.offset-1(class="my-auto")
+                            img(src="/img/first.jpg" width="30px" height="30px" class ="dash-img" alt="user")
+                        .col-3(class="my-auto")
+                            if (user.role === 'Patient')
+                                a.dash-btn(href="/patient-dashboard" id="dashBtn")= user.name.split(' ')[0]
+                            if (user.role === 'Doctor')
+                                a.dash-btn(href="/doctor-dashboard" id="dashBtn")= user.name
+                        .col-4(class="my-auto")
+                            a.reg-btn(href="#" id="logout") Logout
+                    else if (!user && page==='signup')
+                        .col-2.offset-2(class="my-auto")
+                            a.reg-btn(href="#" id="login") Login
+                    else if (!user && page !=='signup')
+                        .col-2.offset-1(class="my-auto")
+                            a.reg-btn(href="/signup" id="signup") Signup
+                        .col-2.offset-2(class="my-auto")
+                            a.reg-btn(href="#" id="login") Login
+                    

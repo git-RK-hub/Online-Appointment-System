@@ -1,0 +1,106 @@
+extends base
+
+mixin pick-slot
+    p(style="font-size:17px; font-weight:600; margin-left: 10px") Morning Slots 
+        .Morning-slot
+            .row.row-header
+                .col-md-2
+                    .pick-slot#t-Morning 10:20 AM
+                .col-md-2
+                    .pick-slot#t-Morning 10:40 AM
+                .col-md-2
+                    .pick-slot#t-Morning 11:00 AM
+                .col-md-2
+                    .pick-slot#t-Morning 11:20 AM
+                .col-md-2
+                    .pick-slot#t-Morning 11:40 AM
+                .col-md-2
+                    .pick-slot#t-Morning 12:00 PM
+    hr
+    
+    p(style="font-size:17px; font-weight:600; margin-left: 10px") Afternoon Slots 
+        .Afternoon-slot
+            .row.row-header
+                .col-md-2
+                    .pick-slot#t-Afternoon 01:40 PM
+                .col-md-2
+                    .pick-slot#t-Afternoon 02:00 PM
+                .col-md-2
+                    .pick-slot#t-Afternoon 02:20 PM
+                .col-md-2
+                    .pick-slot#t-Afternoon 02:40 PM
+                .col-md-2
+                    .pick-slot#t-Afternoon 03:00 PM
+                .col-md-2
+                    .pick-slot#t-Afternoon 03:20 PM
+                .col-md-2
+                    .pick-slot#t-Afternoon 03:40 PM
+                .col-md-2
+                    .pick-slot#t-Afternoon 04:00 PM
+                .col-md-2
+                    .pick-slot#t-Afternoon 04:20 PM
+                .col-md-2
+                    .pick-slot#t-Afternoon 04:40 PM
+                .col-md-2
+                    .pick-slot#t-Afternoon 05:00 PM
+    hr
+    
+    p(style="font-size:17px; font-weight:600; margin-left: 10px") Evening Slots 
+        .Evening-slot
+            .row.row-header
+                .col-md-2
+                    .pick-slot#t-Evening 06:00 PM
+                .col-md-2
+                    .pick-slot#t-Evening 06:20 PM
+                .col-md-2
+                    .pick-slot#t-Evening 06:40 PM
+                .col-md-2
+                    .pick-slot#t-Evening 07:00 PM
+                .col-md-2
+                    .pick-slot#t-Evening 07:20 PM
+                .col-md-2
+                    .pick-slot#t-Evening 07:40 PM
+                .col-md-2
+                    .pick-slot#t-Evening 08:00 PM
+                .col-md-2
+                    .pick-slot#t-Evening 08:20 PM
+                .col-md-2
+                    .pick-slot#t-Evening 08:40 PM
+                .col-md-2
+                    .pick-slot#t-Evening 09:00 PM
+
+block append content
+    .booking-doctor-head
+        .row.row-header 
+            .col-md-3.offset-1
+                .booking-doctor-img: img(src="/img/first.jpg", alt="Doctor Image" height="200px" width="300px")
+            .col-md-3
+                .booking-doctor-head-info
+                    .booking-doctor-name= doctor.name  
+                    p Doctor 
+    .booking-doctor-body
+        .row.row-header
+            .col-sm-7.offset-2
+                .slots-body
+                    .select-day  
+                        .row.row-header.justify-content-center
+                            .col-sm-3(class="select-day-slot")
+                                .today.active
+                                    - const today = new Date(Date.now()).toLocaleString('en-us', {weekday: 'long'})
+                                    p.day-head=today
+                            .col-sm-3(class="select-day-slot")
+                                .tomorrow
+                                    - const tomorrow = new Date(Date.now()+24*60*60*1000).toLocaleString('en-us', {weekday: 'long'})
+                                    p.day-head=tomorrow
+                            .col-sm-3(class="select-day-slot")
+                                .nextday 
+                                    - const nextday = new Date(Date.now()+48*60*60*1000).toLocaleString('en-us', {weekday: 'long'})
+                                    p.day-head=nextday
+                    .select-slot
+                        +pick-slot
+                    .book-slot    
+                        .row.row-header.justify-content-right
+                            .col-sm-4
+                            .col-sm-4
+                            .col-sm-4
+                                button.book-slot-btn(type="submit" id=`${doctor.id}`) Book Slot

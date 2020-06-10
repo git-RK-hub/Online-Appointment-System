@@ -1,0 +1,51 @@
+extends base
+
+mixin bookingDetail(booking)
+    //- - if(new Date(`${booking.date[0]}`).getTime() > new Date(Date.now()).getTime())
+    .row.row-header.no-gutters
+        .col-sm-4
+            p(style="color:blue; font-size:13px;")= `You have an appointment with`
+        .col-sm-3
+            p(style="color:red; font-size:13px;")= `${booking.patient.name} at`
+        .col-sm-3
+            p(style="color:green; font-size:13px;")= `${booking.bookingSlot} on`
+        .col-sm-1
+            p(style="color:orange; font-size:13px;")= booking.bookingDay
+    hr
+
+block append content
+    .doctor-head    
+        .row.row-header
+            .col-md-3.offset-1
+                .doctor-img: img(src="/img/first.jpg", alt="doctor profle" height="200px" width="300px")
+            .col-md-3
+                .doctor-head-info
+                    .patient-name= user.name 
+                    p Doctor
+    .doctor-body
+        .row.row-header
+            .col-md-3.offset-1    
+                .doctor-menu
+                    .menuBtn#update
+                        .row.row-header
+                            .col-md-1
+                                i.fa.fa-edit(style="color: green; font-size: 16px;")
+                            .col-md-6
+                                p Update Info
+                    .menuBtn#delete 
+                        .row.row-header
+                            .col-md-1
+                                i.fa.fa-trash(style="color: red; font-size: 16px;")
+                            .col-md-8
+                                p Delete Account
+            .col-md-7
+                .doctor-dash
+                    .row.row-header
+                        .col-md-12
+                            .doctor-appointment Appointments
+                                .bookings
+                                    .row.row-header
+                                        .col-sm-12
+                                            p
+                                    each booking in bookings
+                                        +bookingDetail(booking)

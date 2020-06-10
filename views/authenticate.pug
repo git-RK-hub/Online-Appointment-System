@@ -1,0 +1,78 @@
+extends base
+
+block append content
+    .fromContainer
+        .row.row-header.justify-content-center.text-center
+            .col-sm-8
+                p.signhead Welcome to Remedium
+
+        .row.row-header.justify-content-center
+            .col-sm-8
+                .signup-card
+                    .signup-template
+                    .signup-form
+                        form
+                            .selector 
+                                label.radio Patient
+                                    input(type="radio" id="selPat" value="patient" name="selector" checked)
+                                    span
+                                label.radio Doctor
+                                    input(type="radio" id="selDoc" value="doctor" name="selector")
+                                    span
+                            .row.row-header.justify-content-start
+                                .col-md-6
+                                    input#firstName(type="text" class="name-input" placeholder="First name" required)
+                                .col-md-6   
+                                    input#lastName(type="text" class="name-input" placeholder="Last name")
+                            .row.row-header.justify-content-start
+                                .col-md-12
+                                    input#email(type="email", class="email-input" placeholder="email@example.com" required)
+                            .row.row-header.justify-content-start
+                                .col-md-12
+                                    input#contact(type="number", class="contact-input" placeholder="eg; (+91)0000000000" max-length="10")
+                            .row.row-header.justify-content-start
+                                .col-md-12
+                                    input#address(type="text", class="address-input" placeholder="eg; 88C, Morena link road, Gwalior" required)
+                            .row.row-header.justify-content-start
+                                .col-md-12
+                                    input#password(type="password", placeholder="Password" class="password-input" required minlength="8")
+                            .row.row-header.justify-content-start
+                                .col-md-12
+                                    input#confirmPassword(type="password", placeholder="Confirm password" class="password-input" required)
+                            .addTwoMore(style="display: none;")
+                                .row.row-header.justify-content-start
+                                    .col-md-12
+                                        label(for="qualification") Qualifications
+                                .row.row-header.justify-content-start
+                                    .col-md-12
+                                        select.qual-input#qualifications
+                                            option(selected="" disabled="") Qualifications
+                                            option MBBS
+                                            option Other
+                                .row.row-header.justify-content-start
+                                    .col-md-12
+                                        label(for="category") Category
+                                .row.row-header.justify-content-start
+                                    .col-md-12
+                                        select.cat-input#category
+                                            option(selected="" disabled="") Category
+                                            option Pediatrician
+                                            option Gynecologist
+                                            option Surgeon
+                                            option Psychiatrist
+                                            option Cardiologist
+                                            option Dermatologist
+                                            option Endocrinologist
+                                            option Gastroenterologist
+                                            option Nephrologist
+                                            option Infectious Disease Physician
+                                            option Otolaryngologist
+                                            option Pulmonologist
+                                            option Neurologist
+                                            option Ophthalmologist
+                                            option Physician Executive
+                                            option Radiologist
+                                            option Anesthesiologist
+                                            option Oncologist
+                                            option Other
+                            button.sign-btn(type="submit" id="signin-btn") Sign in

@@ -1,0 +1,73 @@
+extends base
+
+mixin bookingDetail(booking)
+    .row.row-header
+        .col-sm-4
+            p(style="color:blue; font-size:15px")= booking.doctor.name
+        .col-sm-4
+            p(style="color:green; font-size:15px")= booking.bookingDay
+        .col-sm-4
+            p(style="color:red; font-size:15px")= booking.bookingSlot
+    hr
+
+mixin pastBookingDetail(booking)
+    - const weekDay = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    
+    - if(weekDay.indexOf(bookingDay) < new Date(Date.now()).getDay())
+        .row.row-header
+            .col-sm-4
+                p(style="color:grey; font-size:15px")= booking.doctor.name
+            .col-sm-4
+                p(style="color:grey; font-size:15px")= booking.bookingDay
+            .col-sm-4
+                p(style="color:grey; font-size:15px")= booking.bookingSlot
+        hr
+
+block append content
+    .patient-head    
+        .row.row-header
+            .col-md-3.offset-1
+                .patient-img: img(src="/img/first.jpg", alt="Patient Profle" height="200px" width="300px")
+            .col-md-3
+                .patient-head-info
+                    .patient-name= user.name 
+                    p Patient
+    .patient-body
+        .row.row-header
+            .col-md-3.offset-1    
+                .patient-menu
+                    .menuBtn#update
+                        .row.row-header
+                            .col-md-1
+                                i.fa.fa-edit(style="color: green; font-size: 16px;")
+                            .col-md-6
+                                p Update Info
+                    .menuBtn#delete 
+                        .row.row-header
+                            .col-md-1
+                                i.fa.fa-trash(style="color: red; font-size: 16px;")
+                            .col-md-8
+                                p Delete Account
+            .col-md-7
+                .patient-dash
+                    .row.row-header
+                        .col-md-12
+                            .patient-appointment Appointments
+                                .bookings
+                                    .row.row-header
+                                        .col-sm-12
+                                            p
+                                    each booking in bookings
+                                        +bookingDetail(booking)
+                    //- .row.row-header
+                    //-     .col-md-12
+                    //-         .patient-forRating Past appointments
+                    //-             .pastBookings
+                    //-                 .row.row-header
+                    //-                     .col-sm-12
+                    //-                         p
+                    //-                 each booking in bookings
+                    //-                     +pastBookingDetail(booking)
+                    //- .row.row-header
+                    //-     .col-md-12
+                            .patient-prescription Prescription
