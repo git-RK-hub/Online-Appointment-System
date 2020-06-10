@@ -16,6 +16,8 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
+// Change database variables in config.env file -- 
+
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD
